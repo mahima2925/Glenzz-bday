@@ -1,1 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>For Glenzz 🩵</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    color:#315c70;
+    background:#dff6ff;
+    overflow-x:hidden;
+}
+
+/* DREAMY BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,255,255,.9),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(184,231,249,.8),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eafaff,
+            #c9effc,
+            #e5f8ff
+        );
+}
+
+/* FLOATING STARS */
+
+.stars,
+.hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:20;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    animation:twinkle 2.5s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+}
+
+/* FLOATING EMOJIS */
+
+.float{
+    position:absolute;
+    font-size:24px;
+
+    animation:
+        rise linear forwards;
+}
+
+@keyframes rise{
+
+    from{
+        transform:
+            translateY(110vh)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.9;
+    }
+
+    to{
+        transform:
+            translateY(-15vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+/* COMMON SCREEN */
+
+.screen{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:35px 18px;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.hero{
+    flex-direction:column;
+}
+
+.mini{
+
+    letter-spacing:5px;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    color:#6c9caf;
+}
+
+h1{
+
+    font-size:
+        clamp(58px,13vw,125px);
+
+    line-height:.85;
+
+    color:white;
+
+    text-shadow:
+        0 8px 30px
+        rgba(70,140,170,.28);
+
+    margin:18px 0;
+}
+
+.glenzz{
+
+    font-size:
+        clamp(38px,8vw,75px);
+
+    color:#4b91ad;
+
+    font-weight:bold;
+}
+
+.hero p{
+
+    margin-top:18px;
+
+    font-size:20px;
+}
+
+/* BUTTON */
+
+.open-btn,
+.main-btn{
+
+    margin-top:32px;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:16px 28px;
+
+    background:#6db8d5;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 25px
+        rgba(77,146,174,.25);
+
+    transition:.25s;
+}
+
+.open-btn:hover,
+.main-btn:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+.arrow{
+
+    margin-top:45px;
+
+    font-size:28px;
+
+    animation:bob 1.5s infinite;
+}
+
+@keyframes bob{
+
+    50%{
+        transform:translateY(8px);
+    }
+
+}
+
+
+/* ============================= */
+/* ENVELOPE */
+/* ============================= */
+
+#letterScreen{
+
+    display:none;
+
+    background:
+        rgba(231,249,255,.97);
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    overflow:auto;
+}
+
+.envelope-wrap{
+
+    width:min(900px,94vw);
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.envelope{
+
+    width:min(620px,90vw);
+
+    height:360px;
+
+    margin:35px auto;
+
+    position:relative;
+
+    background:#a9dff1;
+
+    border-radius:14px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(55,125,153,.25);
+
+    overflow:hidden;
+}
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 49%,
+            rgba(255,255,255,.55) 50%,
+            transparent 51%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 49%,
+            rgba(255,255,255,.35) 50%,
+            transparent 51%
+        );
+}
+
+.flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:60%;
+
+    background:#c6ebf7;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:4;
+}
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#67a8c0;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:32px;
+
+    z-index:5;
+
+    box-shadow:
+        0 8px 20px
+        #77b9cf66;
+}
+
+.envelope.open .flap{
+
+    transform:
+        rotateX(180deg);
+
+    z-index:1;
+}
+
+.letter{
+
+    position:absolute;
+
+    left:8%;
+
+    width:84%;
+
+    height:75%;
+
+    top:17%;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:35px 20px;
+
+    z-index:2;
+
+    transition:1s;
+
+    box-shadow:
+        0 8px 25px
+        #4f99b522;
+}
+
+.envelope.open .letter{
+
+    transform:
+        translateY(-35px);
+}
+
+.letter h2{
+
+    font-size:35px;
+
+    color:#4d91ad;
+
+    margin-bottom:15px;
+}
+
+.letter p{
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+
+/* ============================= */
+/* PHOTO SECTION */
+/* ============================= */
+
+.section{
+
+    padding:90px 7vw;
+
+    text-align:center;
+}
+
+.section h2{
+
+    font-size:
+        clamp(36px,6vw,58px);
+
+    color:#4b91ad;
+
+    margin-bottom:12px;
+}
+
+.section-sub{
+
+    font-size:18px;
+
+    color:#6b94a2;
+
+    margin-bottom:45px;
+}
+
+
+/* PHOTO GRID */
+
+.gallery{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:24px;
+}
+
+.card{
+
+    background:white;
+
+    padding:
+        10px
+        10px
+        22px;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 18px 35px
+        rgba(52,116,143,.16);
+
+    transition:.4s;
+}
+
+.card:nth-child(1){
+
+    transform:rotate(-4deg);
+}
+
+.card:nth-child(2){
+
+    transform:rotate(3deg);
+}
+
+.card:nth-child(3){
+
+    transform:rotate(-2deg);
+}
+
+.card:nth-child(4){
+
+    transform:rotate(4deg);
+}
+
+.card:hover{
+
+    transform:
+        rotate(0)
+        translateY(-10px)
+        scale(1.03);
+}
+
+.card img{
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:cover;
+
+    border-radius:5px;
+}
+
+.card small{
+
+    display:block;
+
+    margin-top:13px;
+
+    font-size:15px;
+
+    color:#5e8c9e;
+}
+
+
+/* ============================= */
+/* WISH CARDS */
+/* ============================= */
+
+.memory{
+
+    max-width:850px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:20px;
+}
+
+.memory div{
+
+    padding:28px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.67);
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 12px 28px
+        #4c91ac18;
+}
+
+.memory b{
+
+    display:block;
+
+    font-size:27px;
+
+    color:#4d91ad;
+
+    margin-bottom:8px;
+}
+
+.memory span{
+
+    font-size:17px;
+
+    line-height:1.5;
+}
+
+
+/* ============================= */
+/* MESSAGE */
+/* ============================= */
+
+.wish{
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:45px 30px;
+
+    border-radius:35px;
+
+    background:
+        rgba(255,255,255,.67);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 20px 50px
+        #4d91ad20;
+}
+
+.wish p{
+
+    font-size:20px;
+
+    line-height:1.9;
+}
+
+.type{
+
+    min-height:120px;
+
+    margin-top:25px;
+
+    font-size:24px;
+
+    color:#4d91ad;
+
+    font-weight:bold;
+}
+
+
+/* ============================= */
+/* CAKE */
+/* ============================= */
+
+.cake-area{
+
+    min-height:100vh;
+}
+
+.cake{
+
+    position:relative;
+
+    width:260px;
+
+    height:230px;
+
+    margin:
+        35px auto;
+}
+
+.plate{
+
+    position:absolute;
+
+    bottom:15px;
+
+    width:280px;
+
+    height:25px;
+
+    left:-10px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 8px 12px
+        #4d91ad30;
+}
+
+.layer{
+
+    position:absolute;
+
+    left:30px;
+
+    width:200px;
+
+    height:55px;
+
+    background:#a9dff1;
+
+    border-radius:
+        12px
+        12px
+        8px
+        8px;
+
+    box-shadow:
+        inset 0 -10px
+        rgba(255,255,255,.3);
+}
+
+.l1{
+
+    bottom:40px;
+}
+
+.l2{
+
+    bottom:88px;
+
+    width:175px;
+
+    left:42px;
+
+    background:#c8edf7;
+}
+
+.l3{
+
+    bottom:132px;
+
+    width:145px;
+
+    left:57px;
+
+    background:white;
+}
+
+.candle{
+
+    position:absolute;
+
+    bottom:185px;
+
+    left:125px;
+
+    width:12px;
+
+    height:55px;
+
+    background:#75b8d2;
+
+    border-radius:5px;
+}
+
+.flame{
+
+    position:absolute;
+
+    top:-27px;
+
+    left:-5px;
+
+    font-size:25px;
+
+    animation:
+        flicker .7s infinite alternate;
+}
+
+@keyframes flicker{
+
+    to{
+
+        transform:
+            scale(1.18)
+            rotate(4deg);
+    }
+
+}
+
+
+/* ============================= */
+/* SECRET REVEAL */
+/* ============================= */
+
+.secret{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(217,246,255,.96);
+
+    z-index:200;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+}
+
+.secret.show{
+
+    display:flex;
+}
+
+.secret-box{
+
+    max-width:700px;
+}
+
+.secret-box .big{
+
+    font-size:
+        clamp(42px,10vw,90px);
+
+    color:#4b91ad;
+
+    font-weight:bold;
+
+    line-height:1.05;
+}
+
+.secret-box p{
+
+    font-size:21px;
+
+    margin-top:20px;
+}
+
+footer{
+
+    padding:40px;
+
+    text-align:center;
+
+    color:#6c98a8;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .gallery{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .card img{
+
+        height:270px;
+    }
+}
+
+@media(max-width:550px){
+
+    .gallery,
+    .memory{
+
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+
+        height:360px;
+    }
+
+    .envelope{
+
+        height:300px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- FLOATING STARS -->
+
+<div class="stars" id="stars"></div>
+
+<div class="hearts" id="hearts"></div>
+
+
+<!-- ========================== -->
+<!-- OPENING SCREEN -->
+<!-- ========================== -->
+
+<section class="screen hero">
+
+    <div class="mini">
+
+        a tiny website made for one very special person
+
+    </div>
+
+
+    <h1>
+
+        HAPPY
+
+    </h1>
+
+
+    <div class="glenzz">
+
+        BIRTHDAY GLENZZ 🩵
+
+    </div>
+
+
+    <p>
+
+        ✨ today, the universe is celebrating YOU ✨
+
+    </p>
+
+
+    <button
+        class="open-btn"
+        onclick="openLetter()">
+
+        💌 Open your birthday letter
+
+    </button>
+
+
+    <div class="arrow">
+
+        ↓
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- ENVELOPE -->
+<!-- ========================== -->
+
+<section id="letterScreen">
+
+    <div class="envelope-wrap">
+
+        <div class="mini">
+
+            you have mail 🩵
+
+        </div>
+
+
+        <div
+            class="envelope"
+            id="env">
+
+
+            <div class="flap"></div>
+
+
+            <div class="letter">
+
+                <h2>
+
+                    Dear Glenzz, 🩵
+
+                </h2>
+
+
+                <p>
+
+                    Happy birthdayyyyy! 🥹✨
+
+                    <br><br>
+
+                    Another year of being wonderfully chaotic,
+                    making memories, laughing at absolutely random
+                    things and somehow turning ordinary moments
+                    into the best ones.
+
+                </p>
+
+            </div>
+
+
+            <div class="seal">
+
+                🩵
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="main-btn"
+            onclick="closeLetter()">
+
+            Enter the birthday world ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- PHOTOS -->
+<!-- ========================== -->
+
+<section class="section">
+
+    <h2>
+
+        Our little archive 📸
+
+    </h2>
+
+
+    <p class="section-sub">
+
+        proof that we have absolutely no normal photos 😭
+
+    </p>
+
+
+    <div class="gallery">
+
+
+        <div class="card">
+
+            <img src="images/photo1.jpg">
+
+            <small>
+
+                Ice cream + questionable decisions 🍦
+
+            </small>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <img src="images/photo2.jpg">
+
+            <small>
+
+                Just casually existing together 🩵
+
+            </small>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <img src="images/photo3.jpg">
+
+            <small>
+
+                The facial expressions deserve an award 😭
+
+            </small>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <img src="images/photo4.jpg">
+
+            <small>
+
+                Peak friendship energy ✨
+
+            </small>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- BIRTHDAY WISHES -->
+<!-- ========================== -->
+
+<section class="section">
+
+    <h2>
+
+        Things I hope you get this year 🌷
+
+    </h2>
+
+
+    <p class="section-sub">
+
+        because birthday wishes should be slightly dramatic
+
+    </p>
+
+
+    <div class="memory">
+
+
+        <div>
+
+            <b>✨ Happiness</b>
+
+            <span>
+
+                The kind that sneaks up on you
+                in tiny everyday moments.
+
+            </span>
+
+        </div>
+
+
+
+        <div>
+
+            <b>🌙 Peace</b>
+
+            <span>
+
+                Quiet days, good sleep
+                and fewer things to overthink.
+
+            </span>
+
+        </div>
+
+
+
+        <div>
+
+            <b>🚀 Success</b>
+
+            <span>
+
+                May all those little plans
+                slowly turn into something huge.
+
+            </span>
+
+        </div>
+
+
+
+        <div>
+
+            <b>🫶 Memories</b>
+
+            <span>
+
+                More ridiculous photos,
+                inside jokes and stories to tell later.
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- TYPING MESSAGE -->
+<!-- ========================== -->
+
+<section class="section">
+
+    <div class="wish">
+
+
+        <h2>
+
+            A message for you 💌
+
+        </h2>
+
+
+        <div
+            class="type"
+            id="typed">
+
+        </div>
+
+
+        <button
+            class="main-btn"
+            onclick="startTyping()">
+
+            ✨ Read the real message
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- CAKE -->
+<!-- ========================== -->
+
+<section class="screen cake-area">
+
+
+    <div>
+
+        <div class="mini">
+
+            okay okay… one last thing
+
+        </div>
+
+
+        <h2
+            style="
+            font-size:48px;
+            color:#4b91ad;
+            margin-top:12px;">
+
+            Make a wish 🎂
+
+        </h2>
+
+
+        <div class="cake">
+
+
+            <div class="plate"></div>
+
+
+            <div class="layer l1"></div>
+
+
+            <div class="layer l2"></div>
+
+
+            <div class="layer l3"></div>
+
+
+            <div class="candle">
+
+                <div class="flame">
+
+                    🔥
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="main-btn"
+            onclick="finalReveal()">
+
+            🎁 I have something to say...
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================== -->
+<!-- FINAL SURPRISE -->
+<!-- ========================== -->
+
+<div
+    class="secret"
+    id="secret">
+
+
+    <div class="secret-box">
+
+
+        <div class="big">
+
+            CHOKIIIIIII
+
+            <br>
+
+            BEKUUUUUU!!! 😭🩵
+
+        </div>
+
+
+        <p>
+
+            Birthday rule.
+            No arguments.
+            No negotiations.
+            No escape. 😂
+
+        </p>
+
+
+        <button
+            class="main-btn"
+            onclick="location.reload()">
+
+            ↻ Replay the surprise
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    Made with ✨ chaos + memories + way too much love ✨
+
+</footer>
+
+
+
+<script>
+
+
+/* ========================== */
+/* OPEN ENVELOPE */
+/* ========================== */
+
+function openLetter(){
+
+    const screen =
+        document.getElementById(
+            "letterScreen"
+        );
+
+    screen.style.display="flex";
+
+
+    setTimeout(
+
+        () => {
+
+            document
+                .getElementById("env")
+                .classList
+                .add("open");
+
+        },
+
+        150
+
+    );
+
+}
+
+
+
+function closeLetter(){
+
+    document
+        .getElementById("letterScreen")
+        .style.display="none";
+
+
+    window.scrollTo({
+
+        top:window.innerHeight,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+
+/* ========================== */
+/* STARS */
+/* ========================== */
+
+function makeStars(){
+
+    const box =
+        document.getElementById(
+            "stars"
+        );
+
+
+    for(
+        let i=0;
+        i<45;
+        i++
+    ){
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+
+        star.className="star";
+
+
+        star.textContent =
+            [
+                "✦",
+                "✧",
+                "⋆",
+                "·"
+            ]
+            [
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+
+        star.style.left =
+            Math.random()*100+"vw";
+
+
+        star.style.top =
+            Math.random()*100+"vh";
+
+
+        star.style.fontSize =
+            (8+Math.random()*18)+"px";
+
+
+        star.style.animationDelay =
+            Math.random()*3+"s";
+
+
+        box.appendChild(star);
+
+    }
+
+}
+
+
+
+/* ========================== */
+/* FLOATING HEARTS */
+/* ========================== */
+
+function floatStuff(){
+
+    const box =
+        document.getElementById(
+            "hearts"
+        );
+
+
+    setInterval(
+
+        () => {
+
+            const x =
+                document.createElement(
+                    "div"
+                );
+
+
+            x.className="float";
+
+
+            x.textContent =
+                [
+                    "🩵",
+                    "✨",
+                    "🤍",
+                    "🦋",
+                    "🎀",
+                    "⭐"
+                ]
+                [
+                    Math.floor(
+                        Math.random()*6
+                    )
+                ];
+
+
+            x.style.left =
+                Math.random()*100+"vw";
+
+
+            x.style.animationDuration =
+                (5+Math.random()*5)+"s";
+
+
+            box.appendChild(x);
+
+
+            setTimeout(
+                () => x.remove(),
+                10000
+            );
+
+        },
+
+        600
+    );
+
+}
+
+
+
+/* ========================== */
+/* TYPING MESSAGE */
+/* ========================== */
+
+const message =
+
+"Glenzz, I hope this year is ridiculously kind to you. I hope you laugh until your stomach hurts, find reasons to be excited about tomorrow, and collect a hundred tiny moments that make you think, “yeah… life is actually pretty nice.” Stay your wonderfully chaotic self. Happy Birthdayyyy! 🩵✨";
+
+
+function startTyping(){
+
+    const element =
+        document.getElementById(
+            "typed"
+        );
+
+
+    element.textContent="";
+
+
+    let i=0;
+
+
+    const timer =
+        setInterval(
+
+            () => {
+
+                element.textContent +=
+                    message[i++];
+
+
+                if(
+                    i >= message.length
+                ){
+
+                    clearInterval(timer);
+
+                }
+
+            },
+
+            28
+
+        );
+
+}
+
+
+
+/* ========================== */
+/* CONFETTI */
+/* ========================== */
+
+function confetti(){
+
+    for(
+        let i=0;
+        i<100;
+        i++
+    ){
+
+        const c =
+            document.createElement(
+                "div"
+            );
+
+
+        c.style.position="fixed";
+
+
+        c.style.left =
+            Math.random()*100+"vw";
+
+
+        c.style.top="-30px";
+
+
+        c.style.zIndex=999;
+
+
+        c.style.fontSize =
+            (15+Math.random()*25)+"px";
+
+
+        c.textContent =
+            [
+                "🩵",
+                "✨",
+                "🎀",
+                "🤍",
+                "⭐",
+                "🦋"
+            ]
+            [
+                Math.floor(
+                    Math.random()*6
+                )
+            ];
+
+
+    
