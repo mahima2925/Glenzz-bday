@@ -1638,4 +1638,95 @@ function confetti(){
             ];
 
 
+document.body.appendChild(c);
+
+c.animate(
+
+[
+
+{
+
+transform:
+
+);
+
+"translateY(0) rotate(0)",
+
+opacity:1
+
+},
+
+{
+
+transform:
+
+translateY(110vh)
+
+rotate(${Math.random()*1000}deg)',
+
+opacity:0
+
+}
+
+],
+
+{
+
+}
+
+duration:
+
+1800 +
+
+Math.random()*2500,
+
+easing:"ease-out"
+
+
+
+
+
+
+}
+
+);
+
+setTimeout(
+
+);
+
+() => c.remove(),
+
+4500
+
+/* FINAL REVEAL */
+
+/*
+
+function finalReveal(){
+
+confetti();
+
+document
+
+.getElementById("secret")
+
+.classList
+
+.add("show");
+
+}
+
+/* START */
+
+makeStars();
+
+floatStuff();
+
+</script>
+
+</body>
+
+</html>
+
     
